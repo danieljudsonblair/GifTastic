@@ -40,13 +40,15 @@ function createButtons() {
                 var results = response.data;
                 for (let j = 0; j < results.length; j++) {
                     var celebDiv = $("<div>");
+                    celebDiv.addClass("col-lg col-lg-m-1");
                     var p = $("<p>").text("Rating: " + results[j].rating);
                     celebImage = $("<img>");
                     celebImage.attr("src", results[j].images.fixed_height_still.url);
+                    celebImage.attr("data-still", results[j].images.fixed_height_still.url);
+                    celebImage.attr("data-animate", results[j].images.fixed_height.url);
+                    celebImage.attr("data-state", "still");
                     celebDiv.append(celebImage);
                     celebDiv.append(p);
-                    celebDiv.attr("class", "c" + [j]);
-                    celebDiv.attr("id", "gifs");
                     $(".gif-tainer").prepend(celebDiv);
                 }
             });
@@ -62,4 +64,15 @@ $("#add-celeb").on("click", function () {
     $("#celeb-input").val("");
 
 
+});
+
+$(".gif-tainer").on("click", "img", function () {
+    var state = $(this).attr("data-state")
+if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "notStill");
+} else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+}
 });

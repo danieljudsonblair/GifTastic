@@ -25,3 +25,9 @@ header {
 hr {
     border-color: lightgray;
 }
+.left {
+    float: left;
+}
+.spacer {
+    margin-left: 5px; 
+}
