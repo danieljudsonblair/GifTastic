@@ -42,7 +42,7 @@ function createButtons() {
                     var celebDiv = $("<div>");
                     var p = $("<p>").text("Rating: " + results[j].rating);
                     celebImage = $("<img>");
-                    celebImageS.attr("src", results[j].images.fixed_height_still.url);
+                    celebImage.attr("src", results[j].images.fixed_height_still.url);
                     celebDiv.append(celebImage);
                     celebDiv.append(p);
                     celebDiv.attr("class", "c" + [j]);
